@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Session | Virtual Wellness</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+            font-family: 'Poppins', sans-serif;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="container w-full max-w-4xl p-8 space-y-6">
+        <h1 class="text-4xl font-bold text-center text-teal-600 mb-6">Virtual Yoga Session</h1>
+        
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+            <div class="w-full md:w-1/2">
+                <h2 class="text-2xl font-semibold mb-4">Join Live Session</h2>
+                <a href="https://meet.google.com/yen-chjy-pcy" 
+                   target="_blank" 
+                   class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 inline-block text-center w-full">
+                    Start Google Meet
+                </a>
+            </div>
+            
+            <div class="w-full md:w-1/2">
+                <h2 class="text-2xl font-semibold mb-4">Recommended Videos</h2>
+                <div class="space-y-4">
+                    <iframe 
+                        id="yogaVideo"
+                        class="w-full rounded-lg shadow-md" 
+                        width="100%" 
+                        height="250" 
+                        src="https://www.youtube.com/embed/jFlr-dBY_CE?autoplay=1&mute=1&controls=0" 
+                        title="Yoga Video" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        allow="autoplay">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <form id="feedbackForm" class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold mb-4 text-center">Share Your Experience</h2>
+                
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        required 
+                        class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
+                        placeholder="Enter your name"
+                    >
+                </div>
+
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
+                        placeholder="Enter your email"
+                    >
+                </div>
+
+                <div class="mb-4">
+                    <label for="rating" class="block text-sm font-medium text-gray-700 mb-2">Session Rating</label>
+                    <select 
+                        id="rating" 
+                        name="rating" 
+                        required 
+                        class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
+                    >
+                        <option value="">Select Your Rating</option>
+                        <option value="5">Excellent</option>
+                        <option value="4">Very Good</option>
+                        <option value="3">Good</option>
+                        <option value="2">Average</option>
+                        <option value="1">Needs Improvement</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="feedback" class="block text-sm font-medium text-gray-700 mb-2">Your Feedback</label>
+                    <textarea 
+                        id="feedback" 
+                        name="feedback" 
+                        required 
+                        class="w-full p-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                        rows="4"
+                        placeholder="Write your comments about the yoga session..."
+                    ></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label class="flex items-center">
+                        <input 
+                            type="checkbox" 
+                            id="consent" 
+                            name="consent" 
+                            required 
+                            class="mr-2 text-teal-600 focus:ring-teal-500"
+                        >
+                        <span class="text-sm text-gray-600">I agree to share my feedback anonymously</span>
+                    </label>
+                </div>
+
+                <button  
+                type="submit" 
+                style="
+                    width: 100%; 
+                    background: linear-gradient(to right, #050505, #2c7a7b); 
+                    color: white; 
+                    font-weight: bold; 
+                    padding: 12px 24px; 
+                    border-radius: 9999px; 
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+                    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+                    cursor: pointer; 
+                    text-align: center;
+                " 
+               onmouseover="this.style.background='linear-gradient(to right, #ff6347, #ff4500)'; this.style.boxShadow='0 8px 16px rgba(0, 0, 0, 0.3)'" 
+               onmouseout="this.style.background='linear-gradient(to right, #ff4500, #ff6347)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.2)'"               
+            >
+                Submit Feedback
+                </button>
+            </form>
+
+            <div 
+                id="successMessage" 
+                class="hidden mt-4 p-6 bg-green-100 text-green-800 rounded-lg text-center"
+            >
+                <h3 class="text-xl font-bold mb-4">Thank You!</h3>
+                <p>Your feedback has been successfully submitted. We appreciate your valuable input.</p>
+                <button 
+                    onclick="showFeedbackList()" 
+                    class="mt-4 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full transition duration-300"
+                >
+                    View Feedback
+                </button>
+            </div>
+
+            <div 
+                id="feedbackList" 
+                class="hidden mt-8 p-6 bg-white rounded-lg shadow-md"
+            >
+                <h2 class="text-2xl font-semibold mb-4 text-center text-teal-600">Submitted Feedback</h2>
+                <div id="feedbackContainer" class="space-y-4"></div>
+                <button 
+                    onclick="hideFeedbackList()" 
+                    class="mt-4 w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300"
+                >
+                    Close Feedback List
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to save feedback to localStorage
+        function saveFeedback(formData) {
+            // Retrieve existing feedback or initialize empty array
+            let feedbacks = JSON.parse(localStorage.getItem('yogaFeedbacks')) || [];
+            
+            // Add timestamp to feedback
+            formData.timestamp = new Date().toLocaleString();
+            
+            // Add to feedbacks array
+            feedbacks.push(formData);
+            
+            // Save back to localStorage
+            localStorage.setItem('yogaFeedbacks', JSON.stringify(feedbacks));
+        }
+
+        // Function to retrieve and display feedbacks
+        function showFeedbackList() {
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            const feedbackList = document.getElementById('feedbackList');
+            const successMessage = document.getElementById('successMessage');
+
+            // Clear previous content
+            feedbackContainer.innerHTML = '';
+
+            // Retrieve feedbacks from localStorage
+            let feedbacks = JSON.parse(localStorage.getItem('yogaFeedbacks')) || [];
+
+            // If no feedbacks, show message
+            if (feedbacks.length === 0) {
+                feedbackContainer.innerHTML = '<p class="text-center text-gray-500">No feedback submitted yet.</p>';
+            } else {
+                // Create feedback items
+                feedbacks.forEach((feedback, index) => {
+                    const feedbackItem = document.createElement('div');
+                    feedbackItem.className = 'p-4 bg-gray-100 rounded-lg';
+                    feedbackItem.innerHTML = `
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-lg text-teal-600">${feedback.name}</h3>
+                            <span class="text-sm text-gray-500">${feedback.timestamp}</span>
+                        </div>
+                        <p class="mb-2"><strong>Rating:</strong> ${'⭐'.repeat(feedback.rating)}</p>
+                        <p class="italic">"${feedback.feedback}"</p>
+                        <button 
+                            onclick="deleteFeedback(${index})" 
+                            class="mt-2 bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-full text-sm"
+                        >
+                            Delete
+                        </button>
+                    `;
+                    feedbackContainer.appendChild(feedbackItem);
+                });
+            }
+
+            // Hide success message and show feedback list
+            successMessage.classList.add('hidden');
+            feedbackList.classList.remove('hidden');
+        }
+
+        // Function to hide feedback list
+        function hideFeedbackList() {
+            document.getElementById('feedbackList').classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+        }
+
+        // Function to delete a specific feedback
+        function deleteFeedback(index) {
+            let feedbacks = JSON.parse(localStorage.getItem('yogaFeedbacks')) || [];
+            feedbacks.splice(index, 1);
+            localStorage.setItem('yogaFeedbacks', JSON.stringify(feedbacks));
+            showFeedbackList();
+        }
+
+        // Event listener for form submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                rating: document.getElementById('rating').value,
+                feedback: document.getElementById('feedback').value,
+                consent: document.getElementById('consent').checked
+            };
+    
+            // Validate form data
+            if (!formData.name || !formData.email || !formData.rating || !formData.feedback || !formData.consent) {
+                alert('Please fill out all fields and provide consent.');
+                return;
+            }
+    
+            // Save feedback to localStorage
+            saveFeedback(formData);
+    
+            // Hide form and show success message
+            this.style.display = 'none';
+            document.getElementById('successMessage').classList.remove('hidden');
+        });
+    
+        // Autoplay video function with Google Meet start
+        function autoPlayVideo() {
+            const video = document.getElementById('yogaVideo');
+            
+            // Add event listener for video end
+            video.addEventListener('ended', function() {
+                // Automatically open Google Meet in a new tab
+                window.open('https://meet.google.com/yen-chjy-pcy', 'yen-chjy-pcy');
+            });
+        }
+    
+        // Call autoplay when page loads
+        window.onload = autoPlayVideo;
+    </script>
+</body>
+</html>
